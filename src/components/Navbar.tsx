@@ -48,27 +48,44 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass py-4" : "bg-transparent py-8"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-serif font-bold tracking-tight text-brand-dark">
-          Bless Nails <span className="text-brand-leaf italic font-light">Lisbon</span>
+        {/* LOGÓTIPO MORN: Estilo Industrial */}
+        <a href="#" className="text-2xl font-serif font-bold tracking-tighter text-brand-dark uppercase">
+          MORN <span className="text-brand-leaf font-light italic lowercase tracking-normal ml-1">Barbearia</span>
         </a>
 
         {/* --- MENU DESKTOP --- */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-10">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-[11px] uppercase tracking-[0.15em] font-medium text-brand-dark/80 hover:text-brand-leaf transition-colors">
+            <a 
+              key={link.name} 
+              href={link.href} 
+              className="text-[10px] uppercase tracking-[0.25em] font-bold text-brand-dark/80 hover:text-brand-leaf transition-colors"
+            >
               {link.name}
             </a>
           ))}
           
           <div className="relative">
-            <button onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.15em] hover:text-brand-leaf transition-colors">
+            <button 
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
+              className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-leaf transition-colors"
+            >
               <Globe size={14} /> {lang}
             </button>
             <AnimatePresence>
               {isLangMenuOpen && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute right-0 mt-4 w-32 bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl overflow-hidden border border-brand-straw/30 p-2">
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  exit={{ opacity: 0, y: 10 }} 
+                  className="absolute right-0 mt-4 w-32 bg-white shadow-2xl rounded-none overflow-hidden border border-zinc-200 p-1"
+                >
                   {languages.map((l) => (
-                    <button key={l.code} onClick={() => { setLang(l.code); setIsLangMenuOpen(false); }} className={`w-full text-left px-4 py-2 text-sm rounded-xl hover:bg-brand-cream transition-colors ${lang === l.code ? "text-brand-leaf font-bold bg-brand-cream/50" : "text-brand-dark/70"}`}>
+                    <button 
+                      key={l.code} 
+                      onClick={() => { setLang(l.code); setIsLangMenuOpen(false); }} 
+                      className={`w-full text-left px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition-colors ${lang === l.code ? "text-brand-leaf bg-zinc-50" : "text-brand-dark/70 hover:bg-zinc-100"}`}
+                    >
                       {l.label}
                     </button>
                   ))}
@@ -82,21 +99,21 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
           </a>
         </div>
 
-        {/* --- CABEÇALHO MOBILE (Visível apenas em telemóveis) --- */}
+        {/* --- CABEÇALHO MOBILE --- */}
         <div className="flex items-center gap-3 lg:hidden">
           
-          {/* SELETOR DE IDIOMAS MOBILE (Ao lado do hambúrguer) */}
+          {/* SELETOR DE IDIOMAS MOBILE: Pílula Industrial */}
           <div className="relative">
             <button 
               onClick={() => {
                 setIsLangMenuOpen(!isLangMenuOpen);
-                if (isMobileMenuOpen) setIsMobileMenuOpen(false); // Fecha o menu principal se o de idioma abrir
+                if (isMobileMenuOpen) setIsMobileMenuOpen(false);
               }} 
-              className="flex items-center gap-1 px-3 py-2 bg-white/50 backdrop-blur-sm border border-brand-straw/20 rounded-xl text-[10px] font-bold text-brand-leaf uppercase tracking-widest"
+              className="flex items-center gap-1 px-3 py-2 bg-brand-dark text-white border border-brand-dark rounded-none text-[9px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg"
             >
-              <Globe size={12} />
+              <Globe size={12} className="text-brand-straw" />
               {lang}
-              <ChevronDown size={10} className={`transition-transform duration-300 ${isLangMenuOpen ? "rotate-180" : ""}`} />
+              <ChevronDown size={10} className={`transition-transform duration-300 text-brand-straw ${isLangMenuOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>
@@ -105,13 +122,13 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
                   initial={{ opacity: 0, scale: 0.9, y: 5 }} 
                   animate={{ opacity: 1, scale: 1, y: 0 }} 
                   exit={{ opacity: 0, scale: 0.9, y: 5 }} 
-                  className="absolute right-0 mt-2 w-32 bg-white shadow-2xl rounded-2xl overflow-hidden border border-brand-straw/30 p-1 z-[60]"
+                  className="absolute right-0 mt-3 w-32 bg-brand-dark shadow-2xl rounded-none border border-brand-straw/20 p-1 z-[60]"
                 >
                   {languages.map((l) => (
                     <button 
                       key={l.code} 
                       onClick={() => { setLang(l.code); setIsLangMenuOpen(false); }} 
-                      className={`w-full text-left px-4 py-3 text-xs rounded-xl transition-colors ${lang === l.code ? "bg-brand-leaf text-white font-bold" : "text-brand-dark/60 active:bg-brand-cream"}`}
+                      className={`w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${lang === l.code ? "text-white bg-brand-leaf" : "text-brand-straw hover:text-white"}`}
                     >
                       {l.label}
                     </button>
@@ -121,12 +138,12 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
             </AnimatePresence>
           </div>
 
-          {/* BOTÃO HAMBÚRGUER */}
+          {/* BOTÃO HAMBÚRGUER: Sharp style */}
           <button 
             className="w-10 h-10 flex items-center justify-center text-brand-dark active:scale-90 transition-transform" 
             onClick={() => {
               setIsMobileMenuOpen(!isMobileMenuOpen);
-              if (isLangMenuOpen) setIsLangMenuOpen(false); // Fecha o menu de idiomas se o hambúrguer abrir
+              if (isLangMenuOpen) setIsLangMenuOpen(false);
             }}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -141,19 +158,19 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
             initial={{ opacity: 0, y: -20 }} 
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -20 }} 
-            className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-brand-straw/20 p-8 flex flex-col gap-6 lg:hidden"
+            className="absolute top-full left-0 right-0 bg-brand-cream shadow-2xl border-t border-zinc-200 p-8 flex flex-col gap-6 lg:hidden"
           >
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-serif text-brand-dark border-b border-brand-straw/10 pb-2"
+                className="text-xl font-serif font-bold text-brand-dark border-b border-zinc-200 pb-2 uppercase tracking-tight"
               >
                 {link.name}
               </a>
             ))}
-            <a href={salonData.bookingUrl} target="_blank" rel="noreferrer" className="btn-primary text-center py-4">
+            <a href={salonData.bookingUrl} target="_blank" rel="noreferrer" className="btn-primary text-center py-5">
               {t.bookNow}
             </a>
           </motion.div>
