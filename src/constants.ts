@@ -145,9 +145,9 @@ export const SALON_DATA = {
   
   // NOVA PROPRIEDADE: IMAGENS PRINCIPAIS (Editáveis via Matrix)
   images: {
-    heroBg: "/hero-bg.png",
-    aboutPrincipal: "/sobre-principal.png",
-    aboutDetail: "/sobre-detalhe.png"
+    heroBg: "/hero-bg.webp",
+    aboutPrincipal: "/sobre-principal.webp",
+    aboutDetail: "/sobre-detalhe.webp"
   },
 
   socialLinks: {
