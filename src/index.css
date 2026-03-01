@@ -6,50 +6,52 @@
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Inter", sans-serif;
   
-  /* PALETA DE CORES "UAUU" */
-  --color-brand-cream: #FDFBF7; /* Creme muito claro e luminoso */
-  --color-brand-straw: #E2D3B6; /* Palha elegante */
-  --color-brand-leaf: #5B7A61;  /* Verde folha sofisticado */
-  --color-brand-dark: #2C352D;  /* Cinza escuro esverdeado */
+  /* PALETA MORN BARBEARIA: Industrial & Classic */
+  --color-brand-cream: #F2F2F2;   /* Branco Perolado (Fundo Limpo) */
+  --color-brand-straw: #A6A6A6;   /* Prata/Cromo (Detalhes Metálicos) */
+  --color-brand-leaf: #991B1B;    /* Vermelho MORN (Cadeiras e Destaque) */
+  --color-brand-dark: #0A0A0A;    /* Preto Matte (Autoridade e Texto) */
+  --color-brand-wood: #4B3621;    /* Castanho Escuro (Acolhimento Amadeirado) */
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth; /* Deslize suave entre seções */
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-brand-cream text-brand-dark font-sans antialiased selection:bg-brand-leaf/20 selection:text-brand-dark;
+    /* Pb-24 para não esconder conteúdo atrás da barra mobile */
+    @apply bg-brand-cream text-brand-dark font-sans antialiased selection:bg-brand-leaf/20 selection:text-brand-leaf pb-24 md:pb-0;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif font-bold uppercase tracking-tight;
   }
 }
 
-/* Efeito de Vidro (Glassmorphism) para o Menu */
+/* Efeito de Vidro Industrial */
 .glass {
-  @apply bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-sm transition-all duration-500;
+  @apply bg-white/90 backdrop-blur-xl border-b border-zinc-300 shadow-sm transition-all duration-500;
 }
 
-/* Espaçamento padrão de luxo (mais ar para os elementos) */
+/* Espaçamento Editorial */
 .section-padding {
   @apply py-28 px-6 md:px-12 lg:px-24;
 }
 
-/* Botão Principal: Verde Folha */
+/* Botão Principal: Vermelho Barbearia com cantos retos */
 .btn-primary {
-  @apply bg-brand-leaf text-white px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-500 hover:bg-brand-dark hover:-translate-y-1 shadow-lg shadow-brand-leaf/20 hover:shadow-xl active:scale-95;
+  @apply bg-brand-leaf text-white px-8 py-4 rounded-none font-bold text-[10px] uppercase tracking-[0.25em] transition-all duration-500 hover:bg-brand-dark hover:-translate-y-1 shadow-xl shadow-brand-leaf/20 hover:shadow-brand-leaf/30 active:scale-95;
 }
 
-/* Botão Contorno: Minimalista */
+/* Botão Outline: Industrial Matte */
 .btn-outline {
-  @apply border border-brand-leaf text-brand-leaf px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase font-semibold transition-all duration-500 hover:bg-brand-leaf hover:text-white hover:-translate-y-1 active:scale-95;
+  @apply border-2 border-brand-dark text-brand-dark px-8 py-4 rounded-none font-bold text-[10px] uppercase tracking-[0.25em] transition-all duration-500 hover:bg-brand-dark hover:text-white hover:-translate-y-1 active:scale-95;
 }
 
-/* Barra de rolagem elegante para o Painel de Administrador */
+/* Barra de rolagem personalizada em tons de Vermelho e Preto */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -57,10 +59,10 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-brand-leaf/20 rounded-full hover:bg-brand-leaf/40 transition-colors;
+  @apply bg-brand-leaf/40 rounded-full hover:bg-brand-leaf transition-colors;
 }
 
-/* Ajuste para imagens que falham na galeria */
+/* Transições de imagem */
 img {
-  @apply transition-opacity duration-700;
+  @apply transition-all duration-1000 ease-in-out;
 }
