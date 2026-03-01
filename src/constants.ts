@@ -71,11 +71,12 @@ export const SALON_DATA = {
 
   galleryPhotos: [
     "https://i.ibb.co/JFqMZPw6/pexels-gustavo-fring-7447150.jpg",
-    "", "", "", "", "", "", "", "", ""
+    "https://i.ibb.co/MxjKjv56/pexels-cottonbro-3998429.jpg", 
+    "https://i.ibb.co/HLHrv5xq/pexels-thgusstavo-2881253.jpg", 
   ],
 
   team: [
-    { name: "Bruno", role: { pt: "Barbeiro", en: "Barber", es: "Barbero" }, image: "" },
+    { name: "Bruno", role: { pt: "Barbeiro", en: "Barber", es: "Barbero" }, image: "https://i.ibb.co/HRPzBhV/pexels-hikaique-331989.jpg" },
     { name: "Cássio", role: { pt: "Barbeiro", en: "Barber", es: "Barbero" }, image: "" }
   ],
   
