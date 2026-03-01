@@ -48,9 +48,14 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass py-4" : "bg-transparent py-8"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* LOGÓTIPO MORN: Estilo Industrial */}
-        <a href="#" className="text-2xl font-serif font-bold tracking-tighter text-brand-dark uppercase">
-          MORN <span className="text-brand-leaf font-light italic lowercase tracking-normal ml-1">Barbearia</span>
+        {/* LOGÓTIPO LISBON'STYLE: Neo-Clássico */}
+        <a href="#" className="flex flex-col leading-none group">
+          <span className="text-2xl font-serif font-black tracking-tighter text-brand-dark uppercase group-hover:text-brand-leaf transition-colors">
+            Lisbon'Style
+          </span>
+          <span className="text-[10px] uppercase tracking-[0.4em] text-brand-leaf font-bold">
+            Barbershop
+          </span>
         </a>
 
         {/* --- MENU DESKTOP --- */}
@@ -59,7 +64,7 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-[10px] uppercase tracking-[0.25em] font-bold text-brand-dark/80 hover:text-brand-leaf transition-colors"
+              className="text-[10px] uppercase tracking-[0.25em] font-bold text-brand-dark/80 hover:text-brand-leaf transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-brand-leaf hover:after:w-full after:transition-all"
             >
               {link.name}
             </a>
@@ -84,7 +89,7 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
                     <button 
                       key={l.code} 
                       onClick={() => { setLang(l.code); setIsLangMenuOpen(false); }} 
-                      className={`w-full text-left px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition-colors ${lang === l.code ? "text-brand-leaf bg-zinc-50" : "text-brand-dark/70 hover:bg-zinc-100"}`}
+                      className={`w-full text-left px-4 py-2 text-[11px] font-bold uppercase tracking-wider transition-colors ${lang === l.code ? "text-white bg-brand-leaf" : "text-brand-dark/70 hover:bg-zinc-100"}`}
                     >
                       {l.label}
                     </button>
@@ -102,18 +107,18 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
         {/* --- CABEÇALHO MOBILE --- */}
         <div className="flex items-center gap-3 lg:hidden">
           
-          {/* SELETOR DE IDIOMAS MOBILE: Pílula Industrial */}
+          {/* SELETOR DE IDIOMAS MOBILE: Estética Azul/Preto */}
           <div className="relative">
             <button 
               onClick={() => {
                 setIsLangMenuOpen(!isLangMenuOpen);
                 if (isMobileMenuOpen) setIsMobileMenuOpen(false);
               }} 
-              className="flex items-center gap-1 px-3 py-2 bg-brand-dark text-white border border-brand-dark rounded-none text-[9px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg"
+              className="flex items-center gap-1 px-3 py-2 bg-brand-dark text-white rounded-none text-[9px] font-black uppercase tracking-widest transition-all active:scale-95 shadow-lg"
             >
-              <Globe size={12} className="text-brand-straw" />
+              <Globe size={12} className="text-brand-leaf" />
               {lang}
-              <ChevronDown size={10} className={`transition-transform duration-300 text-brand-straw ${isLangMenuOpen ? "rotate-180" : ""}`} />
+              <ChevronDown size={10} className={`transition-transform duration-300 text-brand-leaf ${isLangMenuOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>
@@ -122,13 +127,13 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
                   initial={{ opacity: 0, scale: 0.9, y: 5 }} 
                   animate={{ opacity: 1, scale: 1, y: 0 }} 
                   exit={{ opacity: 0, scale: 0.9, y: 5 }} 
-                  className="absolute right-0 mt-3 w-32 bg-brand-dark shadow-2xl rounded-none border border-brand-straw/20 p-1 z-[60]"
+                  className="absolute right-0 mt-3 w-32 bg-brand-dark shadow-2xl rounded-none border border-white/10 p-1 z-[60]"
                 >
                   {languages.map((l) => (
                     <button 
                       key={l.code} 
                       onClick={() => { setLang(l.code); setIsLangMenuOpen(false); }} 
-                      className={`w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${lang === l.code ? "text-white bg-brand-leaf" : "text-brand-straw hover:text-white"}`}
+                      className={`w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${lang === l.code ? "text-white bg-brand-leaf" : "text-zinc-400 hover:text-white"}`}
                     >
                       {l.label}
                     </button>
@@ -138,7 +143,7 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
             </AnimatePresence>
           </div>
 
-          {/* BOTÃO HAMBÚRGUER: Sharp style */}
+          {/* BOTÃO HAMBÚRGUER */}
           <button 
             className="w-10 h-10 flex items-center justify-center text-brand-dark active:scale-90 transition-transform" 
             onClick={() => {
@@ -158,14 +163,14 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
             initial={{ opacity: 0, y: -20 }} 
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -20 }} 
-            className="absolute top-full left-0 right-0 bg-brand-cream shadow-2xl border-t border-zinc-200 p-8 flex flex-col gap-6 lg:hidden"
+            className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-zinc-100 p-8 flex flex-col gap-6 lg:hidden"
           >
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-xl font-serif font-bold text-brand-dark border-b border-zinc-200 pb-2 uppercase tracking-tight"
+                className="text-2xl font-serif font-bold text-brand-dark border-b border-zinc-100 pb-2 uppercase tracking-tighter hover:text-brand-leaf transition-colors"
               >
                 {link.name}
               </a>
